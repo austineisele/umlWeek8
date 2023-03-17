@@ -4,7 +4,7 @@ podTemplate(yaml: '''
     spec:
         containers:
         - name: gradle 
-          image: 
+          image: gradle:jdk8 
           command:
           - sleep
           args:
