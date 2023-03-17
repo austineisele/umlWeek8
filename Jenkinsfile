@@ -3,8 +3,8 @@ podTemplate(yaml: '''
     kind: Pod
     spec:
         containers:
-        - name: centos
-          image: centos
+        - name: gradle 
+          image: 
           command:
           - sleep
           args:
@@ -12,16 +12,14 @@ podTemplate(yaml: '''
           restartPolicy: Never
     '''){
         node(POD_LABEL){
-            stage('k8'){
+            stage('gradle'){
                 git 'https://github.com/austineisele/Continuous-Delivery-with-Docker-and-Jenkins-Second-Edition.git' 
-                container('centos'){
-                    stage('start calculator'){
+                container('gradle'){
+                    stage('test calculator'){
                         sh '''
-                        cd Chapter08/sample1
-                        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-                        chmod +x ./kubectl
-                        ./kubectl apply -f calculator.yaml
-                        ./kubectl apply -f hazelcast.yaml
+                        cd Chapter09/sample3
+                        chmod +x gradlew
+                        ./gradlew acceptanceTest -Dcalculator.url=https://calculator-service:8080
                             '''
                     }
                 } 
