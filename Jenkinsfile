@@ -11,7 +11,7 @@ podTemplate(yaml: '''
           - 99d
           restartPolicy: Never
     '''){
-        node: (POD_LABEL){
+        node(POD_LABEL){
             stage('k8'){
                 git 'https://github.com/austineisele/Continuous-Delivery-with-Docker-and-Jenkins-Second-Edition.git' 
                 container('contos'){
