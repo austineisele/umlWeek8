@@ -18,8 +18,10 @@ podTemplate(yaml: '''
                     stage('start calculator'){
                         sh '''
                         cd Chapter08/sample1
-                        curl -ik -H "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_SERVICE_PORT/api/v1/namespaces/devops-tools/deployments -XPOST -H "Content-type: application/yaml" --data-binary @hazelcast.yaml
-                        curl -k -H "Authorization: Bearer $(cat /var/run/secretes/kuberntes.io/serviceaccount/token)" https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_SERVICE_PORT/apis/apps/v1/namespaces/devops-tools/deployments -XPOST -H "Content-type: application/yaml" --data-binary @calculator.yaml
+                        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8,io/release/stable.txt)/bin/linux/amd64/kubectl"
+                        chomd +x ./kubectl
+                        ./kubectl apply -f calculator.yaml
+                        ./kubectl apply -f hazelcast.yaml
                             '''
                     }
                 } 
