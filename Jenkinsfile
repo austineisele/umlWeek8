@@ -26,16 +26,9 @@ podTemplate(yaml: '''
                     }
                     stage('test calculator'){
                         sh '''
-                        cd ../../Chapter09/sample3
-                        chmod +x gradlew
-                        ./gradlew acceptanceTest -Dcalculator.url=http://calculator-service:8080
+                          curl -i calculator-service:8080/div?a=12\\&b=4
                             '''
 
-                            publishHTML(target: [
-                              reportDir: 'Chapter09/sample3/build/reports/tests/acceptanceTest',
-                              reportFiles: 'index.html',
-                              reportName: "Cucumber Acceptance Test Report"
-                            ])
                     } 
             }
       }
