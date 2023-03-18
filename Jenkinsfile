@@ -26,7 +26,8 @@ podTemplate(yaml: '''
                     }
                     stage('test calculator'){
                         sh '''
-                          test $(curl -i calculator-service:8080/div?a=12\\&b=4) -eq 3 && echo 'pass' || 'fail'
+                          testresult=`test $(curl -i calculator-service:8080/div?a=12\\&b=4) -eq 3 && echo 'pass' || 'fail'`
+                          echo $testresult
                             '''
 
                     } 
