@@ -19,7 +19,7 @@ podTemplate(yaml: '''
                         sh '''
                         cd Chapter09/sample3
                         chmod +x gradlew
-                        ./gradlew acceptanceTest --stacktrace --debug -Dcalculator.url=https://calculator-service:8080
+                        ./gradlew acceptanceTest --debug -Dcalculator.url=http://calculator-service:8080
                             '''
 
                             publishHTML(target: [
