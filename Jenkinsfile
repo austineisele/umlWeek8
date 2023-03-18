@@ -23,8 +23,8 @@ podTemplate(yaml: '''
                             '''
 
                             publishHTML(target: [
-                              reportDir: 'Chapter09/sample3/build/reports/test/acceptanceTest'
-                              reportFiles: 'index.html'
+                              reportDir: 'Chapter09/sample3/build/reports/test/acceptanceTest',
+                              reportFiles: 'index.html',
                               repotName: "Cucumber Acceptance Test Report"
                             ])
                     }
