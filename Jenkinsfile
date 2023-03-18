@@ -19,13 +19,13 @@ podTemplate(yaml: '''
                         sh '''
                         cd Chapter09/sample3
                         chmod +x gradlew
-                        ./gradlew acceptanceTest --debug -Dcalculator.url=http://calculator-service:8080
+                        ./gradlew acceptanceTest -Dcalculator.url=http://calculator-service:8080
                             '''
 
                             publishHTML(target: [
                               reportDir: 'Chapter09/sample3/build/reports/test/acceptanceTest',
                               reportFiles: 'index.html',
-                              repotName: "Cucumber Acceptance Test Report"
+                              reportName: "Cucumber Acceptance Test Report"
                             ])
                     }
                 } 
